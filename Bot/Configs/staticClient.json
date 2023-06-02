@@ -1,0 +1,32 @@
+{
+    "Client": {
+        "clientid": "",
+        "clientName": "",
+        "clientSecret": "",
+        "clientToken": ""
+    },
+    "API": {
+        "mongo": ""
+    },
+    "TestServer": {
+        "name": "",
+        "id": ""
+    },
+    "discordjs": {
+        "clientIntents": "32767",
+        "statusText": "Hello! Run /Help For Commands",
+        "statusBar": "idle"
+    },
+    "db": {
+        "client": "",
+        "host": "",
+        "user": "",
+        "password": "",
+        "database": ""
+    },
+    "emojis": {
+        "error": "<:error:1086698885877092364>",
+        "warning": "<:green_warning:1086698330127597670>",
+        "success": "<:shield_success:1086698888464961666>"
+    }
+}

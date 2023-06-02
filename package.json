@@ -1,0 +1,37 @@
+{
+  "name": "serpent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Serpent#8549",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.9.0",
+    "@discordjs/rest": "^1.5.0",
+    "@discordjs/voice": "^0.15.0",
+    "body-parser": "^1.19.0",
+    "chalk": "^2.4.0",
+    "discord-api-types": "^0.37.35",
+    "discord-music-player": "^9.1.1",
+    "discord-tictactoe": "^4.1.1",
+    "discord.js": "^13.14.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express.js": "^1.0.0",
+    "isomorphic-unfetch": "^4.0.2",
+    "knex": "^0.95.15",
+    "moment": "^2.29.4",
+    "mongoose": "^7.0.1",
+    "nodemon": "^2.0.21",
+    "nsfwjs": "^2.4.2",
+    "passport": "^0.6.0",
+    "passport-discord": "^0.1.4",
+    "pg": "^8.9.0",
+    "puppeteer": "^19.10.1",
+    "simply-djs": "^3.0.2",
+    "xmldom": "^0.6.0"
+  }
+}

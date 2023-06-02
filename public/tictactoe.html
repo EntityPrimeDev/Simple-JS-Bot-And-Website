@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tic Tac Toe</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        margin: auto;
+      }
+      td {
+        border: 1px solid black;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        font-size: 32px;
+        cursor: pointer;
+      }
+      td:hover {
+        background-color: #eee;
+      }
+      .win {
+        background-color: #ccffcc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tic Tac Toe</h1>
+    <table id="board">
+      <tr>
+        <td id="0"></td>
+        <td id="1"></td>
+        <td id="2"></td>
+      </tr>
+      <tr>
+        <td id="3"></td>
+        <td id="4"></td>
+        <td id="5"></td>
+      </tr>
+      <tr>
+        <td id="6"></td>
+        <td id="7"></td>
+        <td id="8"></td>
+      </tr>
+    </table>
+    <br>
+    <button id="reset">Reset</button>
+    <script>
+      let board = ["", "", "", "", "", "", "", "", ""];
+      let currentPlayer = "X";
+      let aiPlayer = "O";
+      let gameOver = false;
+
+      // Selects a random move for the AI player
+      function aiMove() {
+        // Check if there's a winning move for the AI
+        for (let i = 0; i < 9; i++) {
+          if (board[i] === "") {
+            board[i] = aiPlayer;
+            if (checkWin(aiPlayer)) {
+              return i;
+            }
+            board[i] = "";
+          }
+        }
+
+        // Check if there's a winning move for the player
+        for (let i = 0; i < 9; i++) {
+          if (board[i] === "") {
+            board[i] = currentPlayer;
+            if (checkWin(currentPlayer)) {
+              board[i] = aiPlayer;
+              return i;
+            }
+            board[i] = "";
+          }
+        }
+
+        // Pick a random move
+        while (true) {
+          let i = Math.floor(Math.random() * 9);
+          if (board[i] === "") {
+            board[i] = aiPlayer;
+            return i;
+          }
+        }
+      }
+
+      // Checks if the given player has won
+      function checkWin(player) {
+        // Check rows
+        for (let i = 0; i < 9; i += 3) {
+          if (board[i] === player && board[i + 1] === player && board[i + 2] === player) {
+            highlightWin(i, i + 1, i + 2);
+            return true;
+          }
+        }
+
+        // Check columns
+        for (let i = 0; i < 3; i++) {
+          if (board[i] === player && board[i + 3] === player && board[i + 6] === player) {
+            highlightWin(i, i + 3, i + 6);
+            return true;
+          }
+        }
+
+        // Check diagonals
+        if (board[0] === player && board[4] === player && board[8] === player) {
+          highlightWin(0, 4, 8);
+          return true;
+        }
+        function bestMove() {
+  // AI to make its turn
+  let bestScore = -Infinity;
+  let move;
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      // Is the spot available?
+      if (board[i][j] == '') {
+        board[i][j] = ai;
+        let score = minimax(board, 0, false);
+        board[i][j] = '';
+        if (score > bestScore) {
+          bestScore = score;
+          move = { i, j };
+        }
+      }
+    }
+  }
+  board[move.i][move.j] = ai;
+  currentPlayer = human;
+  render();
+}
+
+function minimax(board, depth, isMaximizing) {
+  let result = checkWinner();
+  if (result !== null) {
+    return scores[result];
+  }
+  if (isMaximizing) {
+    let bestScore = -Infinity;
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        // Is the spot available?
+        if (board[i][j] == '') {
+          board[i][j] = ai;
+          let score = minimax(board, depth + 1, false);
+          board[i][j] = '';
+          bestScore = Math.max(score, bestScore);
+        }
+      }
+    }
+    return bestScore;
+  } else {
+    let bestScore = Infinity;
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        // Is the spot available?
+        if (board[i][j] == '') {
+          board[i][j] = human;
+          let score = minimax(board, depth + 1, true);
+          board[i][j] = '';
+          bestScore = Math.min(score, bestScore);
+        }
+      }
+    }
+    return bestScore;
+  }
+}
+      }
+</script>
+</body>
+</html>
